@@ -1,0 +1,25 @@
+name = "DioidsGEMM"
+uuid = "e048deda-5dbe-43ea-a194-a49579d4c0b1"
+version = "0.1.0"
+authors = ["Sole sonosole@163.com>"]
+
+
+[compat]
+julia = "1"
+Dioids = "0.1"
+LoopVectorization = "0.12.174"
+
+
+[deps]
+Dioids = "899709ea-2d94-454e-b877-571333ff5bfa"
+LoopVectorization = "bdcacae8-1622-11e9-2a5c-532679323890"
+
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+
+
+[targets]
+test = ["Test", "Random"]
+
