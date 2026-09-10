@@ -9,8 +9,8 @@ function Base.show(io::IO, x::Dioid{⨁, ⨀, A}) where {⨁, ⨀, A <: Abstract
     display(x.data)
 end
 
-include("0-matmat.jl")
-include("1-matvec.jl")
-include("2-vecmat.jl")
+include("matmat.jl")
+include("matvec.jl")
+include("vecmat.jl")
 
 end # module DioidsGEMM
