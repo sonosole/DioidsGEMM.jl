@@ -1,6 +1,6 @@
 # vector * Matrix
 function Base.:*(A::Dioid{⊞,⊡,TA},
-                 B::Dioid{⊞,⊡,TB}) where {⊞, ⊡, TA <: AbstractVector , TB <: AbstractMatrix}
+                 B::Dioid{⊞,⊡,TB}) where {⊞, ⊡, TA <: AbstractVector, TB <: AbstractMatrix}
     x = value(A)
     y = value(B)
     M = length(x)
