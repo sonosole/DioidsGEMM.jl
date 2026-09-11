@@ -23,7 +23,7 @@ pkg> add DioidsGEMM
 ```julia
 julia> using Dioids, BenchmarkTools; Threads.nthreads()
 4
-julia> begin # struct in Matrix
+julia> begin  # struct in Matrix
             n = 512
             w = Dioid{max,+}.(randn(n, n))
             x = Dioid{max,+}.(randn(n, n))
@@ -80,6 +80,20 @@ then you can get many results saved in `png` pictures in your folder `/your/path
 + **Dioids.jl** vs **TropicalNumber.jl** : without GEMM, they have the same speed. 🥇🥇
 + **DioidsGEMM.jl** vs **TropicalGEMM.jl** : they have similar performance under size `725×725`, but over this size `TropicalGEMM.jl` is about 2~3x faster. 🥈🥇
 + `Float32` is faster than `Float64`, so if you don't need high resolution, just use `Float32` data type.
+
+The table below shows a corner of the benchmarks (scripts in `/doc/onebenchmark.jl`):
+```c
+          Benchmark of DioidsGEMM & TropicalGEMM
+      size=512*512*512, datatype=Float32, #threads=4
+┌────────────────┬──────────┬─────────┬────────┬─────────┐
+│                │ time(ms) │ GMACS/s │ GFLOPS │ speedup │
+├────────────────┼──────────┼─────────┼────────┼─────────┤
+│            raw │   279.08 │    0.48 │   0.96 │     1.0 │
+│ DioidsGEMM-SoA │     2.95 │   45.35 │   90.7 │    94.3 │
+│   TropicalGEMM │     3.34 │   40.11 │  80.22 │    83.4 │
+└────────────────┴──────────┴─────────┴────────┴─────────┘
+```
+the **MAC** and **FLOPS** are under tropical semiring semantic.
 
 # Choose between **DioidsGEMM.jl** & **TropicalGEMM.jl**
 
